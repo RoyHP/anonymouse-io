@@ -1,0 +1,19 @@
+{
+  "name": "anonymouse-io",
+  "version": "0.0.1",
+  "description": "Platform for anonymizing phone calls, sms, and mms",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoyHP/anonymouse-io.git"
+  },
+  "author": "Roy Hill-Percival",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RoyHP/anonymouse-io/issues"
+  },
+  "homepage": "https://github.com/RoyHP/anonymouse-io#readme"
+}
