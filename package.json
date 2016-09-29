@@ -3,6 +3,15 @@
   "version": "0.0.1",
   "description": "Platform for anonymizing phone calls, sms, and mms",
   "main": "index.js",
+  "dependencies": {
+    "config": "^1.21.0",
+    "express": "4.14.x",
+    "twilio": "2.11.x"
+  },
+  "devDependencies": {
+    "chai": "3.5.x",
+    "mocha": "3.1.x"
+  },
   "scripts": {
     "test": "mocha --reporter spec"
   },
