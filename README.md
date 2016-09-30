@@ -1,2 +1,4 @@
 # anonymouse-io
-Platform for anonymizing phone calls, sms, and mms
+Node-based platform for anonymizing phone calls, sms, and mms
+
+Thorough documentation coming soon, as this is a WIP rewrite of the original private project
