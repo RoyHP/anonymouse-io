@@ -6,7 +6,7 @@ const main = require("./anonymouse-io")
 
 const app = express()
 // Twilio and SendGrid are currently the only supported providers
-app.use("/v1/sms/", main.Twilio)
+app.use("/v1/voip/", main.Twilio)
 app.use("/v1/email/", main.SendGrid)
 
 // Default to port 80
