@@ -1,6 +1,6 @@
 const config = require("config")
 const express = require("express")
-var app = express()
+const formidable = require("formidable")
 
 module.exports.Twilio = express()
 module.exports.Twilio.get("/", (request, response) => {
@@ -17,10 +17,11 @@ const dbConfig = config.get("Binder.dbConfig")
 const twilioAccountSID = config.get("Twilio.ACCOUNT_SID")
 const twilioAuthToken = config.get("Twilio.AUTH_TOKEN")
 
-const client = require("twilio")(twilioAccountSID, twilioAuthToken)
+const twilio = require("twilio")
+const twilioClient = require("twilio")(twilioAccountSID, twilioAuthToken)
 
 // On initialization, make sure we're using the latest set of available numbers
-client.incomingPhoneNumbers.list((error, data) => {
+twilioClient.incomingPhoneNumbers.list((error, data) => {
 	var numbers = []
 	for (var i = 0; i < data.incomingPhoneNumbers.length; i++) {
 		var number = data.incomingPhoneNumbers[i]
@@ -32,10 +33,24 @@ client.incomingPhoneNumbers.list((error, data) => {
 	// TODO Binder.rotateNumber with numbers array
 })
 
+module.exports.Twilio.post("/sms/receive", (request, response) => {
+	let form = new formidable.IncomingForm()
+	form.parse(request, (error, fields) => {
+		console.log("Received SMS:")
+		console.dir(fields)
+	})
 
+	response.sendStatus(200)
+})
 
-
-module.exports.Twilio.post("/receive", (request, response) => {
+module.exports.Twilio.post("/call/receive", (request, response) => {
 	console.log("Received SMS:")
-	console.dir(request.body)
+	console.dir(request)
+	let clientResponse = new twilio.TwimlResponse()
+	clientResponse.say("Test Response", {
+		voice: "woman",
+		language: "en-gb"
+	})
+
+	response.send(clientResponse.toString())
 })
