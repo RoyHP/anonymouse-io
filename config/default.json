@@ -3,6 +3,9 @@
 		"ACCOUNT_SID": "",
 		"AUTH_TOKEN": ""
 	},
+	"Server": {
+		"port": 1337
+	},
 	"Binder": {
 		"dbConfig": {}
 	}
